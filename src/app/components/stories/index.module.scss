@@ -1,0 +1,10 @@
+.stories {
+  @apply flex w-full;
+  :global {
+    .swiper {
+      .swiper-wrapper {
+        @apply flex gap-2;
+      }
+    }
+  }
+}
