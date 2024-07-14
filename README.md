@@ -31,6 +31,14 @@ A frontend clone of the Instagram Stories feature, built using Next.js, Shadcn U
 
 [Instagram Stories Demo](https://vercel.com/rohity123456s-projects/instagram-stories)
 
+## Screenshots
+### - Home View
+![Instagram Home](./screenshots/home.png)
+
+### - Story View
+![Instagram Story Viewer](./screenshots/story.png)
+
+
 ## Technology Stack
 
 -   **Language:** TypeScript
@@ -54,3 +62,10 @@ A frontend clone of the Instagram Stories feature, built using Next.js, Shadcn U
 
 ```bash
 npm run dev
+```
+
+## Run tests
+
+```bash
+npm run test
+```
