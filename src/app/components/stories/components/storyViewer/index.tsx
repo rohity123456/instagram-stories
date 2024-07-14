@@ -5,9 +5,10 @@ import InstaIconButton from '@/components/common/instaIconButton';
 import { Ellipsis, Send, X } from 'lucide-react';
 import { Story as ReactStory } from 'react-insta-stories/dist/interfaces';
 import UserAvatar from '@/components/common/userAvatar';
+import { IStory, IUser } from '@/types';
 interface StoryViewerProps {
-  stories: Story[];
-  user: User;
+  stories: IStory[];
+  user: IUser;
   handleNextUserStories: () => void;
   currentIndex: number;
   onPreviousStory: () => void;
@@ -54,7 +55,7 @@ export default function StoryViewer({
         </div>
         <ReactInstaStories
           stories={user.stories.map(
-            (story: Story): ReactStory => ({
+            (story: IStory): ReactStory => ({
               url: story.contentUrl
             })
           )}

@@ -1,17 +1,17 @@
-interface User {
+export interface IUser {
   id: string;
   username: string;
   profilePicture: string;
-  stories: Story[];
+  stories: IStory[];
 }
 
-interface Story {
+export interface IStory {
   id: string;
   username: string;
   contentUrl: string;
 }
 
-interface Post {
+export interface IPost {
   id: string;
   username: string;
   profilePicture: string;
@@ -21,7 +21,7 @@ interface Post {
   isHavingStories?: boolean;
 }
 
-interface IResponse<t> {
+export interface IResponse<t> {
   success: boolean;
   data: t;
   error?: { message: string; details: unknown };

@@ -3,8 +3,9 @@ import { useState } from 'react';
 import Story from './components/story';
 import styles from './index.module.scss';
 import StoryViewer from './components/storyViewer';
+import { IUser } from '@/types';
 
-export default function Stories({ users }: { users: User[] }) {
+export default function Stories({ users }: { users: IUser[] }) {
   const [selectedUserIndex, setSelectedUserIndex] = useState<number | null>(
     null
   );
