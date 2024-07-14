@@ -5,8 +5,9 @@ import InstaIconButton from '@/components/common/instaIconButton';
 import { EllipsisVertical, Heart, MessageCircle, Send } from 'lucide-react';
 import InstaSaveIcon from '@/components/icons/InstaSaveIcon';
 import UserAvatar from '@/components/common/userAvatar';
+import { IPost } from '@/types';
 
-const Post = ({ post }: { post: Post }) => {
+const Post = ({ post }: { post: IPost }) => {
   const {
     profilePicture,
     username,
@@ -16,7 +17,7 @@ const Post = ({ post }: { post: Post }) => {
     isHavingStories
   } = post || {};
   return (
-    <div className={styles.post}>
+    <div className={styles.post} data-testid={`posts-${post.id}`} role='post'>
       <div className={styles.header}>
         <div className='flex items-center gap-2'>
           <UserAvatar
@@ -26,7 +27,12 @@ const Post = ({ post }: { post: Post }) => {
             height={28}
             isHavingStories={isHavingStories}
           />
-          <p className='text-sm font-medium mt-2'>{username}</p>
+          <p
+            className='text-sm font-medium mt-2'
+            data-testid={`post-username-${post.id}`}
+          >
+            {username}
+          </p>
         </div>
         <InstaIconButton>
           <EllipsisVertical />
@@ -39,6 +45,7 @@ const Post = ({ post }: { post: Post }) => {
           className={styles.image}
           width={400}
           height={400}
+          data-testid={`post-content-image-${post.id}`}
         />
       </div>
       <div className='p-2'>
@@ -59,7 +66,12 @@ const Post = ({ post }: { post: Post }) => {
         <p className='text-sm font-medium'>{`${likes} likes`}</p>
         <div className='flex gap-2'>
           <p className='text-sm font-medium'>{username}</p>
-          <p className='text-sm font-normal'>{caption}</p>
+          <p
+            className='text-sm font-normal'
+            data-testid={`post-caption-${post.id}`}
+          >
+            {caption}
+          </p>
         </div>
       </div>
     </div>
