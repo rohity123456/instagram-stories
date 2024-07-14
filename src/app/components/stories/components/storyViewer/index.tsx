@@ -26,7 +26,7 @@ export default function StoryViewer({
   return (
     <div
       className={styles.storyViewer}
-      style={{ height: '100vh', width: '100vw' }}
+      style={{ height: '100%', width: '100%' }}
       data-testid='story-viewer'
     >
       <div className='relative w-full h-full'>
