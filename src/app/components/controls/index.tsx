@@ -20,9 +20,7 @@ const Controls = () => {
       <InstaIconButton>
         <InstaWatchIcon />
       </InstaIconButton>
-      <InstaIconButton>
-        <UserAvatar avatar={CONSTANTS.PROFILE_IMAGE} width={28} height={28} />
-      </InstaIconButton>
+      <UserAvatar avatar={CONSTANTS.PROFILE_IMAGE} width={28} height={28} />
     </div>
   );
 };
