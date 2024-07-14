@@ -63,9 +63,9 @@ export default function StoryViewer({
             })
           )}
           defaultInterval={3000}
-          width={'100vw'}
+          width={'100%'}
           onAllStoriesEnd={handleNextUserStories}
-          height={'calc(100vh - 48px)'}
+          height={'calc(100% - 48px)'}
           currentIndex={currentIndex}
           onStoryEnd={() => {
             onNextStory();
@@ -73,6 +73,15 @@ export default function StoryViewer({
           onNext={() => onNextStory()}
           onPrevious={() => onPreviousStory()}
           loop
+          storyStyles={{
+            objectFit: 'contain',
+            objectPosition: 'center'
+          }}
+          storyInnerContainerStyles={{
+            backgroundColor: 'black',
+            display: 'flex',
+            justifyContent: 'center'
+          }}
         />
         <div className={styles.controls}>
           <div className={styles['input']}>
