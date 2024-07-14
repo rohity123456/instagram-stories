@@ -127,6 +127,18 @@ export async function GET(req: NextRequest, res: NextResponse) {
               'https://images.unsplash.com/photo-1640420806289-e8088a1cfe6d?q=80&w=1304&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
           }
         ]
+      },
+      {
+        id: '8',
+        username: 'luna',
+        profilePicture: 'https://i.pravatar.cc/150?img=19',
+        stories: [
+          {
+            id: '1',
+            contentUrl:
+              'https://images.unsplash.com/photo-1642958570064-9247d7abb732?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+          }
+        ]
       }
     ]
   });

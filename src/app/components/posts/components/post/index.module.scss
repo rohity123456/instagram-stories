@@ -1,5 +1,14 @@
 .post {
   @apply rounded-lg shadow-md mt-2;
+  .header {
+    @apply flex items-center justify-between p-2;
+  }
+  .imageContainer {
+    @apply flex items-center justify-center bg-black;
+    .image {
+      @apply object-contain align-middle bg-black dark:bg-white;
+    }
+  }
   .controls {
     @apply flex justify-between items-center;
   }

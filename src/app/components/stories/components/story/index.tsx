@@ -9,7 +9,7 @@ interface StoryProps {
 function Story({ username, avatar, handleClick }: StoryProps) {
   return (
     <div
-      className='flex flex-col items-center space-y-1 cursor-pointer min-w-[56px]'
+      className='flex flex-col items-center space-y-1 cursor-pointer min-w-[50px]'
       onClick={handleClick}
     >
       <UserAvatar avatar={avatar} username={username} isHavingStories={true} />

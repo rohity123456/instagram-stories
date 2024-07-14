@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <main>
+        <main className='md:w-[470px] mx-auto'>
           <Header />
           {children}
         </main>

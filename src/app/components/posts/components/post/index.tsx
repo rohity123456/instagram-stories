@@ -17,7 +17,7 @@ const Post = ({ post }: { post: Post }) => {
   } = post || {};
   return (
     <div className={styles.post}>
-      <div className='flex items-center justify-between p-2'>
+      <div className={styles.header}>
         <div className='flex items-center gap-2'>
           <UserAvatar
             avatar={profilePicture}
@@ -32,13 +32,15 @@ const Post = ({ post }: { post: Post }) => {
           <EllipsisVertical />
         </InstaIconButton>
       </div>
-      <Image
-        src={contentUrl}
-        alt={caption}
-        className='object-contain bg-black dark:bg-white'
-        width={400}
-        height={400}
-      />
+      <div className={styles.imageContainer}>
+        <Image
+          src={contentUrl}
+          alt={caption}
+          className={styles.image}
+          width={400}
+          height={400}
+        />
+      </div>
       <div className='p-2'>
         <div className={styles.controls}>
           <div className='flex'>
