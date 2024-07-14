@@ -66,7 +66,6 @@ export default function Stories({ users }: { users: IUser[] }) {
 
       {selectedUser && (
         <StoryViewer
-          stories={selectedUser.stories}
           user={selectedUser}
           handleNextUserStories={handleNextUserStories}
           currentIndex={currentStoryIndex}

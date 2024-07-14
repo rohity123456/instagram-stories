@@ -7,7 +7,6 @@ import { Story as ReactStory } from 'react-insta-stories/dist/interfaces';
 import UserAvatar from '@/components/common/userAvatar';
 import { IStory, IUser } from '@/types';
 interface StoryViewerProps {
-  stories: IStory[];
   user: IUser;
   handleNextUserStories: () => void;
   currentIndex: number;
@@ -28,6 +27,7 @@ export default function StoryViewer({
     <div
       className={styles.storyViewer}
       style={{ height: '100vh', width: '100vw' }}
+      data-testid='story-viewer'
     >
       <div className='relative w-full h-full'>
         <div className={styles['shadowContainer']}></div>
@@ -48,7 +48,10 @@ export default function StoryViewer({
             <InstaIconButton>
               <Ellipsis className='text-white' />
             </InstaIconButton>
-            <InstaIconButton onClick={() => handleClose()}>
+            <InstaIconButton
+              onClick={() => handleClose()}
+              data-testid='closeStoryBtn'
+            >
               <X className='text-white' />
             </InstaIconButton>
           </div>

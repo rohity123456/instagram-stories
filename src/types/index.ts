@@ -7,7 +7,6 @@ export interface IUser {
 
 export interface IStory {
   id: string;
-  username: string;
   contentUrl: string;
 }
 

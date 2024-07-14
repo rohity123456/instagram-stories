@@ -22,6 +22,7 @@ const UserAvatar = ({
           ? 'bg-gradient-to-tr from-yellow-400 to bg-fuchsia-600 '
           : ''
       } p-[2px] rounded-full`}
+      role='userAvatar'
     >
       <div className='bg-white p-[2px] rounded-full'>
         <Image

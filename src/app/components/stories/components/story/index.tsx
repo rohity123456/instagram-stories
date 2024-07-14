@@ -11,6 +11,8 @@ function Story({ username, avatar, handleClick }: StoryProps) {
     <div
       className='flex flex-col items-center space-y-1 cursor-pointer min-w-[50px]'
       onClick={handleClick}
+      data-testid={`story-${username}`}
+      role='story'
     >
       <UserAvatar avatar={avatar} username={username} isHavingStories={true} />
       <p className='max-w-[50px] truncate text-xs'>{username.toLowerCase()}</p>
