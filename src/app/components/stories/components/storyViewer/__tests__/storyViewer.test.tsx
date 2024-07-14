@@ -53,14 +53,16 @@ describe('StoryViewer Component', () => {
       {
         stories: mockUser.stories.map((story) => ({ url: story.contentUrl })),
         defaultInterval: 3000,
-        width: '100vw',
-        onAllStoriesEnd: expect.any(Function), // Mock handleNextUserStories
-        height: 'calc(100vh - 48px)',
+        width: '100%',
+        onAllStoriesEnd: expect.any(Function),
+        height: 'calc(100% - 48px)',
         currentIndex: 0,
-        onStoryEnd: expect.any(Function), // Mock onNextStory
+        onStoryEnd: expect.any(Function),
         onNext: expect.any(Function),
         onPrevious: expect.any(Function),
-        loop: true
+        loop: true,
+        storyStyles: expect.any(Object),
+        storyInnerContainerStyles: expect.any(Object)
       },
       {}
     );
