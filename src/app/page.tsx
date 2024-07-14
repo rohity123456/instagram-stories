@@ -7,6 +7,10 @@ export default async function Home() {
   const response = await Promise.all([getUsersStories(), getUsersPosts()]);
   const users = response[0].data || [];
   const posts = response[1].data || [];
+
+  if (!users || !posts) {
+    return <div>Something went wrong</div>;
+  }
   return (
     <div className='flex flex-col justify-between w-full mx-auto relative'>
       <section className='border-b-[0.7px] pb-2'>

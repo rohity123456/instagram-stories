@@ -47,6 +47,8 @@ export default function Stories({ users }: { users: User[] }) {
     setCurrentStoryIndex(0);
   };
 
+  if (!users) return null;
+
   return (
     <div className={styles.stories}>
       {users.map((user) => {
