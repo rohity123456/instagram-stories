@@ -1,33 +1,77 @@
 'use client';
 import { useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
 import Story from './components/story';
 import styles from './index.module.scss';
+import StoryViewer from './components/storyViewer';
 
 export default function Stories({ users }: { users: User[] }) {
-  const [selectedUser, setSelectedUser] = useState<User | null>(null);
+  const [selectedUserIndex, setSelectedUserIndex] = useState<number | null>(
+    null
+  );
+  const [currentStoryIndex, setCurrentStoryIndex] = useState<number>(0);
+  const selectedUser =
+    selectedUserIndex !== null ? users[selectedUserIndex] : null;
+  const handleNextUserStories = () => {
+    setCurrentStoryIndex(0);
+    if (selectedUserIndex == users.length - 1) {
+      setSelectedUserIndex(null);
+      return;
+    }
+    if (selectedUserIndex !== null) {
+      setSelectedUserIndex(selectedUserIndex + 1);
+    }
+  };
+  const handleStoryNavigation = (action: string) => () => {
+    if (selectedUser === null || selectedUserIndex === null) {
+      return;
+    }
+    if (action === 'next') {
+      if (currentStoryIndex == selectedUser?.stories?.length - 1) {
+        handleNextUserStories();
+        return;
+      }
+      setCurrentStoryIndex(currentStoryIndex + 1);
+    } else if (action === 'previous') {
+      if (currentStoryIndex == 0) {
+        if (selectedUserIndex !== 0) {
+          setSelectedUserIndex(selectedUserIndex - 1);
+          setCurrentStoryIndex(users[selectedUserIndex - 1].stories.length - 1);
+        }
+      } else if (currentStoryIndex !== 0)
+        setCurrentStoryIndex(currentStoryIndex - 1);
+    }
+  };
+
+  const handleClose = () => {
+    setSelectedUserIndex(null);
+    setCurrentStoryIndex(0);
+  };
 
   return (
     <div className={styles.stories}>
-      <Swiper
-        modules={[Navigation]}
-        spaceBetween={12}
-        loop={false}
-        slidesPerView='auto'
-        slidesPerGroup={6}
-        navigation={true}
-        pagination={{ clickable: false }}
-      >
-        {users.map((user) => {
-          const { id, username, profilePicture } = user;
-          return (
-            <SwiperSlide key={id} onClick={() => setSelectedUser(user)}>
-              <Story username={username} avatar={profilePicture} />
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
+      {users.map((user) => {
+        const { id, username, profilePicture } = user;
+        return (
+          <Story
+            username={username}
+            avatar={profilePicture}
+            key={id}
+            handleClick={() => setSelectedUserIndex(users.indexOf(user))}
+          />
+        );
+      })}
+
+      {selectedUser && (
+        <StoryViewer
+          stories={selectedUser.stories}
+          user={selectedUser}
+          handleNextUserStories={handleNextUserStories}
+          currentIndex={currentStoryIndex}
+          onPreviousStory={handleStoryNavigation('previous')}
+          onNextStory={handleStoryNavigation('next')}
+          handleClose={handleClose}
+        />
+      )}
     </div>
   );
 }

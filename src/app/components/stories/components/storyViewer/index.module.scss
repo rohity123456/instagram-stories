@@ -1,0 +1,25 @@
+.storyViewer {
+  @apply fixed left-0 top-0 z-[500] bg-black overflow-hidden text-white;
+  .shadowContainer {
+    @apply w-full h-20 z-[1000] absolute bg-[linear-gradient(_rgba(0,0,0,0.6)_0%,rgba(39,41,42,0)_100%_)];
+  }
+  .header {
+    @apply absolute flex items-center justify-between z-[1000] w-full box-border mt-[5px] px-0 py-[0.7rem] left-2 top-[0.4rem] text-xs font-medium text-white;
+    .title,
+    .time {
+      @apply ml-[0.4rem] max-w-[58px] truncate text-xs;
+    }
+    .time {
+      @apply text-gray-100;
+    }
+  }
+  .controls {
+    @apply absolute flex text-white w-full justify-between items-center p-[0.4rem] z-[500] bottom-0;
+    .input {
+      @apply border flex-1 mr-4 p-2 rounded-[30px] border-solid border-white;
+      .text {
+        @apply text-xs;
+      }
+    }
+  }
+}

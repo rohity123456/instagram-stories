@@ -3,6 +3,7 @@ import { House, Search, SquarePlus } from 'lucide-react';
 import InstaIconButton from '@/components/common/instaIconButton';
 import InstaWatchIcon from '@/components/icons/InstaWatchIcon';
 import UserAvatar from '@/components/common/userAvatar';
+import CONSTANTS from '@/lib/constants';
 
 const Controls = () => {
   return (
@@ -20,11 +21,7 @@ const Controls = () => {
         <InstaWatchIcon />
       </InstaIconButton>
       <InstaIconButton>
-        <UserAvatar
-          avatar='https://i.pravatar.cc/150?img=1'
-          width={28}
-          height={28}
-        />
+        <UserAvatar avatar={CONSTANTS.PROFILE_IMAGE} width={28} height={28} />
       </InstaIconButton>
     </div>
   );

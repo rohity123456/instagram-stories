@@ -1,12 +1,12 @@
 import React from 'react';
 import { Button } from '../ui/button';
 
-const InstaIconButton = ({
+interface InstaIconButtonProps
+  extends React.ComponentPropsWithoutRef<'button'> {}
+const InstaIconButton: React.FC<InstaIconButtonProps> = ({
   children,
-  className = ''
-}: {
-  children: React.ReactNode;
-  className?: string;
+  className = '',
+  ...props
 }) => {
   return (
     <Button
@@ -15,6 +15,7 @@ const InstaIconButton = ({
         ' ' +
         className
       }
+      {...props}
     >
       {children}
     </Button>

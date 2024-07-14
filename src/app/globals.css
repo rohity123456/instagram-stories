@@ -65,5 +65,14 @@
     }
     body {
       @apply bg-background text-foreground;
+      &::-webkit-scrollbar {
+        appearance: none;
+        display: none;
+      }
+      
+      &::-webkit-scrollbar-thumb {
+        display: none;
+        appearance: none;
+      }
     }
   }

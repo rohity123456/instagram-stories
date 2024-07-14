@@ -1,48 +1,83 @@
 'use client';
-import { useState, useEffect } from 'react';
-import Image from 'next/image';
-import { Button } from '@/components/ui/button';
-
+import ReactInstaStories from 'react-insta-stories';
+import styles from './index.module.scss';
+import InstaIconButton from '@/components/common/instaIconButton';
+import { Ellipsis, Send, X } from 'lucide-react';
+import { Story as ReactStory } from 'react-insta-stories/dist/interfaces';
+import UserAvatar from '@/components/common/userAvatar';
 interface StoryViewerProps {
   stories: Story[];
+  user: User;
+  handleNextUserStories: () => void;
+  currentIndex: number;
+  onPreviousStory: () => void;
+  onNextStory: () => void;
+  handleClose: () => void;
 }
 
-export default function StoryViewer({ stories }: StoryViewerProps) {
-  const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentStoryIndex((prevIndex) => (prevIndex + 1) % stories.length);
-    }, 5000); // Auto-advance every 5 seconds
-
-    return () => clearInterval(interval);
-  }, [stories.length]);
-
-  const handlePrev = () => {
-    setCurrentStoryIndex(
-      (prevIndex) => (prevIndex - 1 + stories.length) % stories.length
-    );
-  };
-
-  const handleNext = () => {
-    setCurrentStoryIndex((prevIndex) => (prevIndex + 1) % stories.length);
-  };
-
+export default function StoryViewer({
+  user,
+  handleNextUserStories,
+  currentIndex,
+  onPreviousStory,
+  onNextStory,
+  handleClose
+}: StoryViewerProps) {
   return (
-    <div className='relative h-screen w-screen'>
-      <Image
-        src={stories[currentStoryIndex].contentUrl}
-        alt='Story'
-        className='h-full w-full object-cover'
-        fill
-      />
-      <div className='absolute top-0 left-0 w-full h-full flex items-center justify-between p-4'>
-        <Button variant='outline' className='rounded-full' onClick={handlePrev}>
-          Previous
-        </Button>
-        <Button variant='outline' className='rounded-full' onClick={handleNext}>
-          Next
-        </Button>
+    <div
+      className={styles.storyViewer}
+      style={{ height: '100vh', width: '100vw' }}
+    >
+      <div className='relative w-full h-full'>
+        <div className={styles['shadowContainer']}></div>
+        <div className={styles['header']}>
+          <div className='flex items-center'>
+            <UserAvatar
+              avatar={user.profilePicture}
+              username={user.username}
+              width={32}
+              height={32}
+            />
+            <p className={styles.title}>{user.username.toLowerCase()}</p>
+            <p className={styles.time}>{`${Math.floor(
+              Math.random() * 24
+            ).toFixed(0)} h`}</p>
+          </div>
+          <div className='flex '>
+            <InstaIconButton>
+              <Ellipsis className='text-white' />
+            </InstaIconButton>
+            <InstaIconButton onClick={() => handleClose()}>
+              <X className='text-white' />
+            </InstaIconButton>
+          </div>
+        </div>
+        <ReactInstaStories
+          stories={user.stories.map(
+            (story: Story): ReactStory => ({
+              url: story.contentUrl
+            })
+          )}
+          defaultInterval={3000}
+          width={'100vw'}
+          onAllStoriesEnd={handleNextUserStories}
+          height={'calc(100vh - 48px)'}
+          currentIndex={currentIndex}
+          onStoryEnd={() => {
+            onNextStory();
+          }}
+          onNext={() => onNextStory()}
+          onPrevious={() => onPreviousStory()}
+          loop
+        />
+        <div className={styles.controls}>
+          <div className={styles['input']}>
+            <span className={styles['text']}>Send Message</span>
+          </div>
+          <InstaIconButton>
+            <Send className='text-white' />
+          </InstaIconButton>
+        </div>
       </div>
     </div>
   );

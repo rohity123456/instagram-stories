@@ -11,8 +11,8 @@ interface UserAvatarProps {
 const UserAvatar = ({
   username,
   avatar,
-  width = 56,
-  height = 56,
+  width = 50,
+  height = 50,
   isHavingStories = false
 }: UserAvatarProps) => {
   return (
