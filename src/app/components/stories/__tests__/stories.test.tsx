@@ -59,7 +59,3 @@ describe('Stories Component', () => {
     expect(screen.queryByRole('button')).not.toBeInTheDocument();
   });
 });
-
-it('always fails', () => {
-  expect(true).toBe(false);
-});
